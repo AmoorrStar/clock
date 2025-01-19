@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Clock</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #202020; /* Background color */
+            color: #4DAB9A; /* Text color */
+        }
+
+        #clock {
+            font-size: 5rem; /* Main clock font size */
+            font-family: 'Roboto', sans-serif; /* Bold and modern font */
+            text-align: center;
+            padding: 20px; /* Adjust padding */
+            background-color: rgba(32, 32, 32, 0.9); /* Slightly transparent clock container background */
+            border-radius: 10px; /* Rounded corners */
+            position: relative;
+            line-height: 1; /* Remove extra spacing */
+        }
+    </style>
+</head>
+<body>
+    <div id="clock"></div>
+    <script>
+        function updateClock() {
+            const clockElement = document.getElementById('clock');
+            const now = new Date();
+
+            let hours = now.getHours() % 12 || 12; // Convert to 12-hour format
+            let minutes = now.getMinutes().toString().padStart(2, '0');
+
+            clockElement.textContent = `${hours}:${minutes}`;
+        }
+
+        // Update clock every minute
+        setInterval(updateClock, 60000);
+        updateClock(); // Initial call
+    </script>
+</body>
+</html>
